@@ -7,18 +7,28 @@
 
 import SwiftUI
 
+struct CustonText: View {
+    var text: String
+    var body: some View {
+        Text(text)
+    }
+    
+    init(_ text: String) {
+        print("Creating a CustonText")
+        self.text = text
+    }
+}
+
 struct ContentView: View {
     var body: some View {
-        VStack {
-            GeometryReader { geo in
-                Image("Example")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: geo.size.width, height: geo.size.height)
-    //                .clipped()
+        ScrollView(.vertical) {
+            VStack(spacing: 10) {
+                ForEach(0..<100) {
+                    CustonText("Item \($0)")
+                        .font(.title)
+                }
             }
-            
-                
+            .frame(maxWidth: .infinity)
         }
     }
 }
