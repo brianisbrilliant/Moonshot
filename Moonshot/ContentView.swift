@@ -9,8 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, Moon!")
-            .padding()
+        VStack {
+            GeometryReader { geo in
+                Image("Example")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: geo.size.width, height: geo.size.height)
+    //                .clipped()
+            }
+            
+                
+        }
     }
 }
 
